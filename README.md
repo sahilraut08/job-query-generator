@@ -41,36 +41,6 @@ A static website that helps new graduates create perfect Google search queries f
 - Combine multiple parameters for targeted searches
 - Try different platforms for varied results
 
-## 🚀 Deployment
-
-### GitHub Pages (Recommended)
-
-This project is configured for automatic deployment to GitHub Pages with CI/CD:
-
-1. **Fork/Clone** this repository
-2. **Push to main branch** - automatic deployment
-3. **Access your site** at `https://YOUR_USERNAME.github.io/job-query-generator/`
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
-
-### Local Development
-
-```bash
-# Start local server
-npm start
-# or
-python3 -m http.server 8000
-
-# Open http://localhost:8000 in your browser
-```
-
-## CI/CD Pipeline
-
-- **Automatic deployment** on every push to main branch
-- **GitHub Actions** workflow for seamless deployment
-- **Pull request previews** with deployment comments
-- **Zero-downtime updates** with GitHub Pages
-
 ## Browser Support
 
 Works in all modern browsers (Chrome, Firefox, Safari, Edge)
