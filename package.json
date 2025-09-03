@@ -1,0 +1,31 @@
+{
+  "name": "job-query-generator",
+  "version": "1.0.0",
+  "description": "A static website that helps new graduates create perfect Google search queries for finding jobs in the USA",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "test": "echo 'No tests configured'",
+    "deploy": "echo 'Deploy via GitHub Actions'"
+  },
+  "keywords": [
+    "job-search",
+    "new-grad",
+    "career",
+    "employment",
+    "static-site",
+    "github-pages"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/job-query-generator.git"
+  },
+  "homepage": "https://yourusername.github.io/job-query-generator",
+  "devDependencies": {},
+  "dependencies": {}
+} 

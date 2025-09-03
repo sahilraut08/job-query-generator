@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Query Generator - Find New Grad Jobs in USA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-search"></i> Job Query Generator</h1>
+            <p>Generate perfect Google search queries for new grad jobs in the USA</p>
+        </header>
+
+        <main class="main-content">
+            <div class="templates-section">
+                <h2><i class="fas fa-rocket"></i> Quick Start Templates</h2>
+                <div class="template-grid">
+                    <button class="template-btn" data-template="software-engineer">
+                        <i class="fas fa-code"></i>
+                        <span>Software Engineer</span>
+                        <small>New Grad, Bay Area</small>
+                    </button>
+                    <button class="template-btn" data-template="data-scientist">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Data Scientist</span>
+                        <small>Entry Level, Remote</small>
+                    </button>
+                    <button class="template-btn" data-template="product-manager">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Product Manager</span>
+                        <small>New Grad, NYC</small>
+                    </button>
+                    <button class="template-btn" data-template="data-analyst">
+                        <i class="fas fa-database"></i>
+                        <span>Data Analyst</span>
+                        <small>Entry Level, Austin</small>
+                    </button>
+                    <button class="template-btn" data-template="frontend-developer">
+                        <i class="fas fa-palette"></i>
+                        <span>Frontend Developer</span>
+                        <small>New Grad, Seattle</small>
+                    </button>
+                    <button class="template-btn" data-template="machine-learning">
+                        <i class="fas fa-brain"></i>
+                        <span>ML Engineer</span>
+                        <small>Entry Level, Boston</small>
+                    </button>
+                </div>
+            </div>
+
+            <div class="query-builder">
+                <div class="form-section">
+                    <h2>Job Search Parameters</h2>
+                    
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title/Role</label>
+                        <input type="text" id="jobTitle" placeholder="e.g., Software Engineer, Data Analyst, Product Manager">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="e.g., New York, San Francisco, Remote">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company (Optional)</label>
+                        <input type="text" id="company" placeholder="e.g., Google, Microsoft, Startup">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timePosted">Time Posted</label>
+                        <select id="timePosted">
+                            <option value="">Any time</option>
+                            <option value="past 24 hours">Past 24 hours</option>
+                            <option value="past week">Past week</option>
+                            <option value="past month">Past month</option>
+                            <option value="past 3 months">Past 3 months</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Experience Level</label>
+                        <select id="experience">
+                            <option value="entry level">Entry Level</option>
+                            <option value="new grad">New Grad</option>
+                            <option value="junior">Junior</option>
+                            <option value="0-1 years">0-1 years</option>
+                            <option value="0-2 years">0-2 years</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="salaryRange">Salary Range</label>
+                        <select id="salaryRange">
+                            <option value="">Any salary</option>
+                            <option value="$40k-$60k">$40k - $60k</option>
+                            <option value="$50k-$70k">$50k - $70k</option>
+                            <option value="$60k-$80k">$60k - $80k</option>
+                            <option value="$70k-$90k">$70k - $90k</option>
+                            <option value="$80k-$100k">$80k - $100k</option>
+                            <option value="$90k-$120k">$90k - $120k</option>
+                            <option value="$100k+">$100k+</option>
+                            <option value="competitive">Competitive Salary</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workType">Work Type</label>
+                        <select id="workType">
+                            <option value="">Any work type</option>
+                            <option value="remote">Remote</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="onsite">On-site</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="keywords">Additional Keywords</label>
+                        <input type="text" id="keywords" placeholder="e.g., Python, React, AWS, Machine Learning">
+                    </div>
+
+                    <button id="generateQuery" class="btn-primary">
+                        <i class="fas fa-magic"></i> Generate Query
+                    </button>
+                </div>
+
+                <div class="results-section">
+                    <h2>Generated Job Search Queries</h2>
+                    <div class="query-display">
+                        <div id="queryText" class="query-text"></div>
+                        <div class="query-actions">
+                            <button id="copyQuery" class="btn-secondary" style="display: none;">
+                                <i class="fas fa-copy"></i> Copy Query
+                            </button>
+                            <button id="searchGoogle" class="btn-primary" style="display: none;">
+                                <i class="fab fa-google"></i> Search on Google
+                            </button>
+                        </div>
+                        
+                        <div class="job-board-actions" style="display: none;">
+                            <h3>Search on Job Platforms</h3>
+                            
+                            <div class="job-board-category">
+                                <h4><i class="fas fa-star"></i> Major Platforms</h4>
+                                <div class="job-board-buttons">
+                                    <button id="searchLinkedIn" class="btn-linkedin">
+                                        <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+                                    </button>
+                                    <button id="searchIndeed" class="btn-indeed">
+                                        <i class="fas fa-search"></i> <span>Indeed</span>
+                                    </button>
+                                    <button id="searchGlassdoor" class="btn-glassdoor">
+                                        <i class="fas fa-door-open"></i> <span>Glassdoor</span>
+                                    </button>
+                                    <button id="searchDice" class="btn-dice">
+                                        <i class="fas fa-dice"></i> <span>Dice</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="job-board-category">
+                                <h4><i class="fas fa-rocket"></i> Startups & Tech</h4>
+                                <div class="job-board-buttons">
+                                    <button id="searchAngelList" class="btn-angellist">
+                                        <i class="fas fa-rocket"></i> <span>AngelList</span>
+                                    </button>
+                                    <button id="searchBuiltIn" class="btn-builtin">
+                                        <i class="fas fa-building"></i> <span>Built In</span>
+                                    </button>
+                                    <button id="searchStackOverflow" class="btn-stackoverflow">
+                                        <i class="fab fa-stack-overflow"></i> <span>Stack Overflow</span>
+                                    </button>
+                                    <button id="searchYCombinator" class="btn-ycombinator">
+                                        <i class="fas fa-fire"></i> <span>Y Combinator</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="job-board-category">
+                                <h4><i class="fas fa-handshake"></i> Specialized Platforms</h4>
+                                <div class="job-board-buttons">
+                                    <button id="searchHired" class="btn-hired">
+                                        <i class="fas fa-handshake"></i> <span>Hired</span>
+                                    </button>
+                                    <button id="searchTriplebyte" class="btn-triplebyte">
+                                        <i class="fas fa-code"></i> <span>Triplebyte</span>
+                                    </button>
+                                    <button id="searchGreenhouse" class="btn-greenhouse">
+                                        <i class="fas fa-seedling"></i> <span>Greenhouse</span>
+                                    </button>
+                                    <button id="searchLever" class="btn-lever">
+                                        <i class="fas fa-lever"></i> <span>Lever</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="job-board-category">
+                                <h4><i class="fas fa-globe"></i> Remote & Global</h4>
+                                <div class="job-board-buttons">
+                                    <button id="searchRemoteOK" class="btn-remoteok">
+                                        <i class="fas fa-globe"></i> <span>Remote OK</span>
+                                    </button>
+                                    <button id="searchWeWorkRemotely" class="btn-weworkremotely">
+                                        <i class="fas fa-home"></i> <span>We Work Remotely</span>
+                                    </button>
+                                    <button id="searchFlexJobs" class="btn-flexjobs">
+                                        <i class="fas fa-clock"></i> <span>FlexJobs</span>
+                                    </button>
+                                    <button id="searchWorkingNomads" class="btn-workingnomads">
+                                        <i class="fas fa-passport"></i> <span>Working Nomads</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="job-board-category">
+                                <h4><i class="fas fa-graduation-cap"></i> New Grad Focused</h4>
+                                <div class="job-board-buttons">
+                                    <button id="searchWayUp" class="btn-wayup">
+                                        <i class="fas fa-graduation-cap"></i> <span>WayUp</span>
+                                    </button>
+                                    <button id="searchHandshake" class="btn-handshake">
+                                        <i class="fas fa-handshake"></i> <span>Handshake</span>
+                                    </button>
+                                    <button id="searchCollegeGrad" class="btn-collegegrad">
+                                        <i class="fas fa-university"></i> <span>CollegeGrad</span>
+                                    </button>
+                                    <button id="searchInternMatch" class="btn-internmatch">
+                                        <i class="fas fa-briefcase"></i> <span>InternMatch</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="job-board-note">
+                                <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Some platforms will take you to their main page where you can search manually. LinkedIn, Indeed, and Glassdoor support direct search with your generated query.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-section">
+                <h3><i class="fas fa-lightbulb"></i> Pro Tips</h3>
+                <ul>
+                    <li>Use specific job titles for better results</li>
+                    <li>Include location for local opportunities</li>
+                    <li>Add relevant skills/technologies</li>
+                    <li>Use time filters to find recent postings</li>
+                    <li>Combine multiple keywords for targeted searches</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Job Query Generator. Built for new grads finding their dream job.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
